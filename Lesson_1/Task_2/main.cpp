@@ -2,60 +2,50 @@
 #include <cmath>
 using namespace std;
 
-char action_func() {
-    char action = 0;
-    cin >> action;
-
-    if (action == '+' || action == '-' || action == '*'
-        || action == '/' || action == '^' || action == 's') {
-        return action;
-    }
-    else {
-        cout << "Error: enter invalid action\n";
-        cout << "\nEnter correct action (+,-,^,/,s,*):";
-        return action_func();
-    }
-}
-
-void calculator() {
+int main() {
     float num1, num2, result = 0;
     int degree = 0;
     char action = 0;
 
     cout << "Enter first num:";
     cin >> num1;
-    cout << "\nEnter action:";
-    action = action_func();
 
-    if (action != '^' && action != 's') {
+    cout << "\nEnter action:";
+    cin >> action;
+
+    if (action == '+' || action == '-' || action == '*' || action == '/') {
         cout << "\nEnter second num:";
         cin >> num2;
 
         switch (action) {
         case '+':
             result = num1 + num2;
-            cout << "Result: " << result;
+            cout << "Result: " << result << endl;
             break;
 
         case '-':
             result = num1 - num2;
-            cout << "Result: " << result;
+            cout << "Result: " << result  << endl;
             break;
 
         case '*':
             result = num1 * num2;
-            cout << "Result: " << result;
+            cout << "Result: " << result << endl;
             break;
 
         case '/':
             if (num2 != 0) {
                 result = num1 / num2;
-                cout << "Result: " << result;
+                cout << "Result: " << result << endl;
             } else {
                 cout << "Error: Division by zero\n";
-                calculator();
+                return 1;
             }
             break;
+
+        default:
+            cout << "Error: Invalid operation." << endl;
+            return 1;
         }
     }
     else if (action == '^') {
@@ -71,19 +61,10 @@ void calculator() {
             cout << "\nSquare root of the first number: " << result << endl;
         }
     }
-
-    char exit_or_not = 0;
-    cout << "\nIf you want to continue enter \"+\" or \"-\" for exit" << endl;
-    cin >> exit_or_not;
-    if (exit_or_not == '+')
-        calculator();
     else {
-        cout << "Goodbye!";
+        cout << "Error action operation" << endl;
+        return 1;
     }
-}
 
-int main()
-{
-    calculator();
     return 0;
 }
