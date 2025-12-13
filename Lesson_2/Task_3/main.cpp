@@ -5,7 +5,7 @@ using namespace std;
 int main()
 {
     char line_text[256];
-    char vowels[5] = {'a', 'e', 'u', 'o', 'i'};
+    char vowels[10] = {'a', 'e', 'u', 'o', 'i', 'A', 'E', 'U', 'O', 'I'};
     int count_consonants = 0, count_vowels = 0;
     int line_lenght = 0;
 
@@ -17,8 +17,8 @@ int main()
 
     for (int counter = 0; line_text[counter]; counter++) {
         bool end = false;
-        for (int letters = 0; letters < 5; letters++) {
-            if (tolower(line_text[counter]) == vowels[letters]) {
+        for (int letters = 0; letters < 10; letters++) {
+            if (line_text[counter] == vowels[letters]) {
                 count_vowels++;
                 end = true;
                 break;
